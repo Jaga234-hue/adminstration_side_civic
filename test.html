@@ -1,0 +1,185 @@
+<div class="page" id="workers">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Field Workers Management</h1>
+        <button class="btn btn-primary" id="addWorkerBtn">
+            <i class="fas fa-user-plus"></i> Add Worker
+        </button>
+    </div>
+    
+    <!-- Stats Cards for Workers -->
+    <div class="stats-cards">
+        <div class="stat-card">
+            <div class="stat-icon" style="background: #e3f2fd; color: #1976d2;">
+                <i class="fas fa-hard-hat"></i>
+            </div>
+            <div class="stat-info">
+                <h3>42</h3>
+                <p>Total Workers</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon" style="background: #fff3e0; color: #f57c00;">
+                <i class="fas fa-user-clock"></i>
+            </div>
+            <div class="stat-info">
+                <h3>28</h3>
+                <p>Active Today</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon" style="background: #e8f5e9; color: #388e3c;">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="stat-info">
+                <h3>156</h3>
+                <p>Tasks This Week</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon" style="background: #fce4ec; color: #c2185b;">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="stat-info">
+                <h3>8</h3>
+                <p>Specialized Teams</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Worker Cards View -->
+    <div class="table-container">
+        <div class="table-header">
+            <h2 class="table-title">Field Workers</h2>
+            <div class="table-filters">
+                <select class="filter-select" id="departmentFilter">
+                    <option value="">All Departments</option>
+                    <option value="Road Repair">Road Repair</option>
+                    <option value="Sanitation">Sanitation</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Public Safety">Public Safety</option>
+                </select>
+                <select class="filter-select" id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="On Leave">On Leave</option>
+                </select>
+                <input type="text" class="filter-select" placeholder="Search workers..." id="searchWorker">
+            </div>
+        </div>
+        
+        <div class="worker-cards" id="workerCardsContainer">
+            <!-- Worker cards will be dynamically populated -->
+        </div>
+    </div>
+    
+    <!-- Workers Table View -->
+    <div class="table-container">
+        <div class="table-header">
+            <h2 class="table-title">Workers List</h2>
+            <div class="view-toggle">
+                <button class="btn btn-primary active" id="tableViewBtn">
+                    <i class="fas fa-table"></i> Table View
+                </button>
+                <button class="btn btn-secondary" id="cardViewBtn">
+                    <i class="fas fa-th-large"></i> Card View
+                </button>
+            </div>
+        </div>
+        
+        <table id="workersTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Employee ID</th>
+                    <th>Department</th>
+                    <th>Specialization</th>
+                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Current Tasks</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="worker-info">
+                            <img src="https://ui-avatars.com/api/?name=Michael+Brown&background=3498db&color=fff" class="worker-avatar" alt="Michael Brown">
+                            <span>Michael Brown</span>
+                        </div>
+                    </td>
+                    <td>EMP-2021-045</td>
+                    <td>Road Repair</td>
+                    <td>Asphalt Specialist</td>
+                    <td>michael.b@city.gov</td>
+                    <td><span class="status status-resolved">Active</span></td>
+                    <td>3</td>
+                    <td>
+                        <button class="action-btn action-view"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn action-edit"><i class="fas fa-edit"></i></button>
+                        <button class="action-btn action-delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="worker-info">
+                            <img src="https://ui-avatars.com/api/?name=Jessica+Wilson&background=2ecc71&color=fff" class="worker-avatar" alt="Jessica Wilson">
+                            <span>Jessica Wilson</span>
+                        </div>
+                    </td>
+                    <td>EMP-2022-128</td>
+                    <td>Sanitation</td>
+                    <td>Waste Management</td>
+                    <td>jessica.w@city.gov</td>
+                    <td><span class="status status-in-progress">On Leave</span></td>
+                    <td>0</td>
+                    <td>
+                        <button class="action-btn action-view"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn action-edit"><i class="fas fa-edit"></i></button>
+                        <button class="action-btn action-delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="worker-info">
+                            <img src="https://ui-avatars.com/api/?name=Robert+Taylor&background=e74c3c&color=fff" class="worker-avatar" alt="Robert Taylor">
+                            <span>Robert Taylor</span>
+                        </div>
+                    </td>
+                    <td>EMP-2020-087</td>
+                    <td>Utilities</td>
+                    <td>Electrical Systems</td>
+                    <td>robert.t@city.gov</td>
+                    <td><span class="status status-resolved">Active</span></td>
+                    <td>2</td>
+                    <td>
+                        <button class="action-btn action-view"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn action-edit"><i class="fas fa-edit"></i></button>
+                        <button class="action-btn action-delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="worker-info">
+                            <img src="https://ui-avatars.com/api/?name=Amanda+Lee&background=9b59b6&color=fff" class="worker-avatar" alt="Amanda Lee">
+                            <span>Amanda Lee</span>
+                        </div>
+                    </td>
+                    <td>EMP-2023-012</td>
+                    <td>Public Safety</td>
+                    <td>Traffic Control</td>
+                    <td>amanda.l@city.gov</td>
+                    <td><span class="status status-new">Training</span></td>
+                    <td>1</td>
+                    <td>
+                        <button class="action-btn action-view"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn action-edit"><i class="fas fa-edit"></i></button>
+                        <button class="action-btn action-delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

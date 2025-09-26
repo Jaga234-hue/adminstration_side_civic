@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Civic Issue Reporting System - Admin Portal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <i class="fas fa-city fa-2x"></i>
+          <h2>Civic Admin</h2>
+        </div>
+        <div class="sidebar-menu">
+          <div class="menu-item active" data-page="dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </div>
+          <div class="menu-item" data-page="issues">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>All Issues</span>
+          </div>
+          <div class="menu-item" data-page="users">
+            <i class="fas fa-users"></i>
+            <span>Users</span>
+          </div>
+          <div class="menu-item" data-page="workers">
+            <i class="fas fa-hard-hat"></i>
+            <span>Field Workers</span>
+          </div>
+          <div class="menu-item" data-page="departments">
+            <i class="fas fa-building"></i>
+            <span>Departments</span>
+          </div>
+          <div class="menu-item" data-page="analytics">
+            <i class="fas fa-chart-bar"></i>
+            <span>Analytics</span>
+          </div>
+          <div class="menu-item" data-page="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+          <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search..." />
+          </div>
+          <div class="user-info">
+            <div style="margin-right: 15px">
+              <i class="fas fa-bell"></i>
+            </div>
+            <img
+              src="https://ui-avatars.com/api/?name=Admin+User&background=3498db&color=fff"
+              alt="Admin User"
+            />
+            <span>Admin User</span>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+          <!-- Dashboard Page -->
+          <div class="page active" id="dashboard">
+            <div class="dashboard-header">
+              <h1 class="dashboard-title">Dashboard Overview</h1>
+              <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> New Issue
+              </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-cards">
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #e3f2fd; color: #1976d2"
+                >
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>142</h3>
+                  <p>New Issues</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #fff3e0; color: #f57c00"
+                >
+                  <i class="fas fa-tasks"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>89</h3>
+                  <p>In Progress</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #e8f5e9; color: #388e3c"
+                >
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>234</h3>
+                  <p>Resolved</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #fce4ec; color: #c2185b"
+                >
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>12</h3>
+                  <p>Overdue</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Issues Table -->
+            <div class="table-container">
+              <div class="table-header">
+                <h2 class="table-title">Recent Issues</h2>
+                <div class="table-filters">
+                  <select class="filter-select">
+                    <option>All Categories</option>
+                    <option>Road Repair</option>
+                    <option>Sanitation</option>
+                  </select>
+                  <select class="filter-select">
+                    <option>All Status</option>
+                    <option>New</option>
+                    <option>In Progress</option>
+                  </select>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Issue</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Reported</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#CIV-2023-0876</td>
+                    <td>Pothole on Main Street</td>
+                    <td>Road Repair</td>
+                    <td class="priority-high">High</td>
+                    <td><span class="status status-new">New</span></td>
+                    <td>2 hours ago</td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Assign</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>#CIV-2023-0875</td>
+                    <td>Garbage not collected</td>
+                    <td>Sanitation</td>
+                    <td class="priority-medium">Medium</td>
+                    <td>
+                      <span class="status status-in-progress">In Progress</span>
+                    </td>
+                    <td>1 day ago</td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Update</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts">
+              <div class="chart-container">
+                <h3 class="chart-title">Issues by Category</h3>
+                <div class="chart-placeholder">
+                  <i class="fas fa-chart-pie fa-3x"></i>
+                  <span style="margin-left: 10px"
+                    >Category Distribution Chart</span
+                  >
+                </div>
+              </div>
+              <div class="chart-container">
+                <h3 class="chart-title">Resolution Timeline</h3>
+                <div class="chart-placeholder">
+                  <i class="fas fa-chart-line fa-3x"></i>
+                  <span style="margin-left: 10px"
+                    >Resolution Timeline Chart</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- All Issues Page -->
+          <div class="page" id="issues">
+            <div class="dashboard-header">
+              <h1 class="dashboard-title">All Reported Issues</h1>
+              <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> New Issue
+              </button>
+            </div>
+
+            <div class="table-container">
+              <div class="table-header">
+                <h2 class="table-title">Issues Management</h2>
+                <div class="table-filters">
+                  <select class="filter-select">
+                    <option>All Categories</option>
+                    <option>Road Repair</option>
+                    <option>Sanitation</option>
+                  </select>
+                  <select class="filter-select">
+                    <option>All Status</option>
+                    <option>New</option>
+                    <option>In Progress</option>
+                  </select>
+                  <select class="filter-select">
+                    <option>Sort by: Newest</option>
+                    <option>Sort by: Priority</option>
+                  </select>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Issue</th>
+                    <th>Category</th>
+                    <th>Location</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Reported</th>
+                    <th>Assigned To</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#CIV-2023-0876</td>
+                    <td>Pothole on Main Street</td>
+                    <td>Road Repair</td>
+                    <td>Main St & 5th Ave</td>
+                    <td class="priority-high">High</td>
+                    <td><span class="status status-new">New</span></td>
+                    <td>2 hours ago</td>
+                    <td>-</td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Assign</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>#CIV-2023-0875</td>
+                    <td>Garbage not collected</td>
+                    <td>Sanitation</td>
+                    <td>Maple Drive</td>
+                    <td class="priority-medium">Medium</td>
+                    <td>
+                      <span class="status status-in-progress">In Progress</span>
+                    </td>
+                    <td>1 day ago</td>
+                    <td>John Smith</td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Update</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>#CIV-2023-0874</td>
+                    <td>Broken streetlight</td>
+                    <td>Utilities</td>
+                    <td>Oak Street Park</td>
+                    <td class="priority-medium">Medium</td>
+                    <td><span class="status status-new">New</span></td>
+                    <td>1 day ago</td>
+                    <td>-</td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Assign</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>#CIV-2023-0873</td>
+                    <td>Water leakage</td>
+                    <td>Utilities</td>
+                    <td>Central Square</td>
+                    <td class="priority-high">High</td>
+                    <td>
+                      <span class="status status-in-progress">In Progress</span>
+                    </td>
+                    <td>2 days ago</td>
+                    <td>Sarah Johnson</td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Update</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>#CIV-2023-0872</td>
+                    <td>Graffiti on public wall</td>
+                    <td>Public Safety</td>
+                    <td>City Library</td>
+                    <td class="priority-low">Low</td>
+                    <td>
+                      <span class="status status-resolved">Resolved</span>
+                    </td>
+                    <td>3 days ago</td>
+                    <td>Mike Davis</td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Reopen</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Users Page -->
+          <div class="page" id="users">
+            <div class="dashboard-header">
+              <h1 class="dashboard-title">System Users</h1>
+              <button class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Add User
+              </button>
+            </div>
+
+            <div class="user-cards">
+              <div class="user-card">
+                <img
+                  src="https://ui-avatars.com/api/?name=John+Smith&background=3498db&color=fff"
+                  class="user-avatar"
+                  alt="John Smith"
+                />
+                <div class="user-details">
+                  <h3>John Smith</h3>
+                  <div class="user-role">Administrator</div>
+                  <div class="user-stats">
+                    <div class="user-stat">
+                      <div class="user-stat-value">45</div>
+                      <div class="user-stat-label">Issues</div>
+                    </div>
+                    <div class="user-stat">
+                      <div class="user-stat-value">38</div>
+                      <div class="user-stat-label">Resolved</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="user-card">
+                <img
+                  src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=2ecc71&color=fff"
+                  class="user-avatar"
+                  alt="Sarah Johnson"
+                />
+                <div class="user-details">
+                  <h3>Sarah Johnson</h3>
+                  <div class="user-role">Department Manager</div>
+                  <div class="user-stats">
+                    <div class="user-stat">
+                      <div class="user-stat-value">32</div>
+                      <div class="user-stat-label">Issues</div>
+                    </div>
+                    <div class="user-stat">
+                      <div class="user-stat-value">28</div>
+                      <div class="user-stat-label">Resolved</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="user-card">
+                <img
+                  src="https://ui-avatars.com/api/?name=Mike+Davis&background=e74c3c&color=fff"
+                  class="user-avatar"
+                  alt="Mike Davis"
+                />
+                <div class="user-details">
+                  <h3>Mike Davis</h3>
+                  <div class="user-role">Field Supervisor</div>
+                  <div class="user-stats">
+                    <div class="user-stat">
+                      <div class="user-stat-value">67</div>
+                      <div class="user-stat-label">Issues</div>
+                    </div>
+                    <div class="user-stat">
+                      <div class="user-stat-value">59</div>
+                      <div class="user-stat-label">Resolved</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <div class="table-header">
+                <h2 class="table-title">All Users</h2>
+                <div class="table-filters">
+                  <select class="filter-select">
+                    <option>All Roles</option>
+                    <option>Administrator</option>
+                    <option>Department Manager</option>
+                  </select>
+                  <input
+                    type="text"
+                    class="filter-select"
+                    placeholder="Search users..."
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Last Login</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John Smith</td>
+                    <td>john.smith@city.gov</td>
+                    <td>Administrator</td>
+                    <td>Public Works</td>
+                    <td>Today, 09:24</td>
+                    <td><span class="status status-resolved">Active</span></td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Edit</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sarah Johnson</td>
+                    <td>sarah.j@city.gov</td>
+                    <td>Department Manager</td>
+                    <td>Sanitation</td>
+                    <td>Yesterday, 14:32</td>
+                    <td><span class="status status-resolved">Active</span></td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Edit</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mike Davis</td>
+                    <td>mike.davis@city.gov</td>
+                    <td>Field Supervisor</td>
+                    <td>Utilities</td>
+                    <td>2 days ago</td>
+                    <td><span class="status status-resolved">Active</span></td>
+                    <td>
+                      <button class="action-btn action-view">View</button>
+                      <button class="action-btn action-edit">Edit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Other pages would go here with similar structure -->
+          <div class="page" id="workers">
+            <div class="dashboard-header">
+              <h1 class="dashboard-title">Field Workers Management</h1>
+              <button class="btn btn-primary" id="addWorkerBtn">
+                <i class="fas fa-user-plus"></i> Add Worker
+              </button>
+            </div>
+
+            <!-- Stats Cards for Workers -->
+            <div class="stats-cards">
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #e3f2fd; color: #1976d2"
+                >
+                  <i class="fas fa-hard-hat"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>42</h3>
+                  <p>Total Workers</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #fff3e0; color: #f57c00"
+                >
+                  <i class="fas fa-user-clock"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>28</h3>
+                  <p>Active Today</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #e8f5e9; color: #388e3c"
+                >
+                  <i class="fas fa-tasks"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>156</h3>
+                  <p>Tasks This Week</p>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div
+                  class="stat-icon"
+                  style="background: #fce4ec; color: #c2185b"
+                >
+                  <i class="fas fa-tools"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>8</h3>
+                  <p>Specialized Teams</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Worker Cards View -->
+            <div class="table-container">
+              <div class="table-header">
+                <h2 class="table-title">Field Workers</h2>
+                <div class="table-filters">
+                  <select class="filter-select" id="departmentFilter">
+                    <option value="">All Departments</option>
+                    <option value="Road Repair">Road Repair</option>
+                    <option value="Sanitation">Sanitation</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Public Safety">Public Safety</option>
+                  </select>
+                  <select class="filter-select" id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="On Leave">On Leave</option>
+                  </select>
+                  <input
+                    type="text"
+                    class="filter-select"
+                    placeholder="Search workers..."
+                    id="searchWorker"
+                  />
+                </div>
+              </div>
+
+              <div class="worker-cards" id="workerCardsContainer">
+                <!-- Worker cards will be dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Workers Table View -->
+            <div class="table-container">
+              <div class="table-header">
+                <h2 class="table-title">Workers List</h2>
+                <div class="view-toggle">
+                  <button class="btn btn-primary active" id="tableViewBtn">
+                    <i class="fas fa-table"></i> Table View
+                  </button>
+                  <button class="btn btn-secondary" id="cardViewBtn">
+                    <i class="fas fa-th-large"></i> Card View
+                  </button>
+                </div>
+              </div>
+
+              <table id="workersTable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Employee ID</th>
+                    <th>Department</th>
+                    <th>Specialization</th>
+                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Current Tasks</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="worker-info">
+                        <img
+                          src="https://ui-avatars.com/api/?name=Michael+Brown&background=3498db&color=fff"
+                          class="worker-avatar"
+                          alt="Michael Brown"
+                        />
+                        <span>Michael Brown</span>
+                      </div>
+                    </td>
+                    <td>EMP-2021-045</td>
+                    <td>Road Repair</td>
+                    <td>Asphalt Specialist</td>
+                    <td>michael.b@city.gov</td>
+                    <td><span class="status status-resolved">Active</span></td>
+                    <td>3</td>
+                    <td>
+                      <button class="action-btn action-view">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn action-edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="action-btn action-delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="worker-info">
+                        <img
+                          src="https://ui-avatars.com/api/?name=Jessica+Wilson&background=2ecc71&color=fff"
+                          class="worker-avatar"
+                          alt="Jessica Wilson"
+                        />
+                        <span>Jessica Wilson</span>
+                      </div>
+                    </td>
+                    <td>EMP-2022-128</td>
+                    <td>Sanitation</td>
+                    <td>Waste Management</td>
+                    <td>jessica.w@city.gov</td>
+                    <td>
+                      <span class="status status-in-progress">On Leave</span>
+                    </td>
+                    <td>0</td>
+                    <td>
+                      <button class="action-btn action-view">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn action-edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="action-btn action-delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="worker-info">
+                        <img
+                          src="https://ui-avatars.com/api/?name=Robert+Taylor&background=e74c3c&color=fff"
+                          class="worker-avatar"
+                          alt="Robert Taylor"
+                        />
+                        <span>Robert Taylor</span>
+                      </div>
+                    </td>
+                    <td>EMP-2020-087</td>
+                    <td>Utilities</td>
+                    <td>Electrical Systems</td>
+                    <td>robert.t@city.gov</td>
+                    <td><span class="status status-resolved">Active</span></td>
+                    <td>2</td>
+                    <td>
+                      <button class="action-btn action-view">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn action-edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="action-btn action-delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="worker-info">
+                        <img
+                          src="https://ui-avatars.com/api/?name=Amanda+Lee&background=9b59b6&color=fff"
+                          class="worker-avatar"
+                          alt="Amanda Lee"
+                        />
+                        <span>Amanda Lee</span>
+                      </div>
+                    </td>
+                    <td>EMP-2023-012</td>
+                    <td>Public Safety</td>
+                    <td>Traffic Control</td>
+                    <td>amanda.l@city.gov</td>
+                    <td><span class="status status-new">Training</span></td>
+                    <td>1</td>
+                    <td>
+                      <button class="action-btn action-view">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn action-edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="action-btn action-delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="page" id="departments">
+            <div class="dashboard-header">
+              <h1 class="dashboard-title">Departments</h1>
+              <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add Department
+              </button>
+            </div>
+            <p>Departments management page content would go here.</p>
+          </div>
+
+          <div class="page" id="analytics">
+            <div class="dashboard-header">
+              <h1 class="dashboard-title">Analytics & Reports</h1>
+              <button class="btn btn-primary">
+                <i class="fas fa-download"></i> Export Report
+              </button>
+            </div>
+            <p>Analytics and reporting page content would go here.</p>
+          </div>
+
+          <div class="page" id="settings">
+            <div class="dashboard-header">
+              <h1 class="dashboard-title">System Settings</h1>
+            </div>
+            <p>System settings page content would go here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
