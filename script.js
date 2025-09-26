@@ -239,3 +239,124 @@
         // Initialize the page with table view
         tableViewBtn.click();
     });
+    // Department Management JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  const addDepartmentBtn = document.getElementById('addDepartmentBtn');
+  const departmentModal = document.getElementById('departmentModal');
+  const closeModal = document.getElementById('closeModal');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const departmentForm = document.getElementById('departmentForm');
+  const deptStatusFilter = document.getElementById('deptStatusFilter');
+  
+  // Open modal for adding new department
+  addDepartmentBtn.addEventListener('click', function() {
+    document.getElementById('modalTitle').textContent = 'Add New Department';
+    departmentForm.reset();
+    departmentModal.classList.add('active');
+  });
+  
+  // Close modal
+  closeModal.addEventListener('click', closeDepartmentModal);
+  cancelBtn.addEventListener('click', closeDepartmentModal);
+  
+  // Close modal when clicking outside
+  departmentModal.addEventListener('click', function(e) {
+    if (e.target === departmentModal) {
+      closeDepartmentModal();
+    }
+  });
+  
+  function closeDepartmentModal() {
+    departmentModal.classList.remove('active');
+  }
+  
+  // Handle department form submission
+  departmentForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const deptName = document.getElementById('deptName').value;
+    const deptHead = document.getElementById('deptHead').value;
+    const deptStatus = document.getElementById('deptStatus').value;
+    
+    // In a real application, you would send this data to a server
+    console.log('New department:', { deptName, deptHead, deptStatus });
+    
+    // Show success message
+    alert(`Department "${deptName}" has been created successfully!`);
+    
+    // Close modal
+    closeDepartmentModal();
+    
+    // Refresh department stats (in a real app, this would update from server)
+    updateDepartmentStats();
+  });
+  
+  // Department action buttons
+  document.querySelectorAll('.department-actions button').forEach(button => {
+    button.addEventListener('click', function() {
+      const action = this.classList[1]; // action-view, action-edit, or action-delete
+      const dept = this.getAttribute('data-dept');
+      
+      switch(action) {
+        case 'action-view':
+          viewDepartment(dept);
+          break;
+        case 'action-edit':
+          editDepartment(dept);
+          break;
+        case 'action-delete':
+          deleteDepartment(dept);
+          break;
+      }
+    });
+  });
+  
+  function viewDepartment(dept) {
+    alert(`Viewing department: ${dept}`);
+    // In a real application, this would navigate to a department details page
+  }
+  
+  function editDepartment(dept) {
+    document.getElementById('modalTitle').textContent = 'Edit Department';
+    // In a real application, this would pre-fill the form with department data
+    departmentModal.classList.add('active');
+  }
+  
+  function deleteDepartment(dept) {
+    if (confirm(`Are you sure you want to delete the ${dept} department?`)) {
+      // In a real application, this would send a delete request to the server
+      alert(`Department ${dept} has been deleted.`);
+      updateDepartmentStats();
+    }
+  }
+  
+  // Filter departments by status
+  deptStatusFilter.addEventListener('change', function() {
+    const status = this.value;
+    filterDepartments(status);
+  });
+  
+  function filterDepartments(status) {
+    // In a real application, this would filter the department list
+    console.log(`Filtering departments by status: ${status}`);
+  }
+  
+  // Update department statistics
+  function updateDepartmentStats() {
+    // In a real application, these values would come from the server
+    const totalDepts = document.querySelectorAll('.department-card').length;
+    document.getElementById('totalDepartments').textContent = totalDepts;
+    
+    // Simulate updating other stats
+    const staffCount = Math.floor(Math.random() * 20) + 30;
+    const activeIssues = Math.floor(Math.random() * 50) + 100;
+    const resolutionRate = Math.floor(Math.random() * 20) + 75;
+    
+    document.getElementById('totalStaff').textContent = staffCount;
+    document.getElementById('activeIssues').textContent = activeIssues;
+    document.getElementById('avgResolution').textContent = `${resolutionRate}%`;
+  }
+  
+  // Initialize department stats
+  updateDepartmentStats();
+});
